@@ -77,27 +77,26 @@ const render = () => {
     content.length
   } tasks completed`;
   const clear = document.querySelector(".Container3 .clearBtn");
-  clear.textContent = `Clear all`;
-  clear.addEventListener("click", () => {
-    content.length = 0;
-    list.innerHTML = "";
-    list.textContent = "No tasks yet. Add one above!";
-    count.textContent = "";
-    clear.textContent = "";
-  });
+  clear.textContent = `Clear completed`;
+  clear.onclick = () => {
+    content = content.filter((item) => !item.isDone);
+    render();
+  };
   addListeners();
 };
 const addListeners = () => {
   const deleteBtns = document.querySelectorAll(".delete-btn");
   const count = document.querySelector(".taskCount");
   const clear = document.querySelector(".Container3 .clearBtn");
+  const completedCount = content.filter((item) => item.isDone).length;
   if (content.length === 0) {
     list.textContent = "No tasks yet. Add one above!";
     count.style.display = "none";
     clear.style.display = "none";
   } else {
     count.style.display = "block";
-    clear.style.display = "block";
+    // show clear button only if there are completed tasks
+    clear.style.display = completedCount ? "block" : "none";
   }
   deleteBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
