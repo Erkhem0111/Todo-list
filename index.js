@@ -95,7 +95,6 @@ const addListeners = () => {
     clear.style.display = "none";
   } else {
     count.style.display = "block";
-    // show clear button only if there are completed tasks
     clear.style.display = completedCount ? "block" : "none";
   }
   deleteBtns.forEach((btn) => {
