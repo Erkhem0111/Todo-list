@@ -33,6 +33,7 @@ input.addEventListener("keypress", (e) => {
   }
 });
 add.addEventListener("click", () => {
+  if (input.value.trim() === "") return;
   content.push({
     id: id,
     text: input.value,
@@ -98,7 +99,7 @@ const addListeners = () => {
     count.style.display = "block";
     clear.style.display = "block";
   }
-  deleteBtns.forEach((btn, i) => {
+  deleteBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
       content = content.filter((item) => item.id != btn.id);
       render();
