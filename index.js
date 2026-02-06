@@ -77,7 +77,7 @@ const render = () => {
     content.length
   } tasks completed`;
   const clear = document.querySelector(".Container3 .clearBtn");
-  clear.textContent = `Clear completeted`;
+  clear.textContent = `Clear all`;
   clear.addEventListener("click", () => {
     content.length = 0;
     list.innerHTML = "";
